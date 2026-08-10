@@ -28,7 +28,7 @@ void state_driver_interface::start(
 	}
 
 	ci=controllers[states.get_current()];
-	ci->awake(_kernel.get_input());
+	ci->awake(_kernel.get_input(), -1); //-1, because this is the first controller to awake and there is no previous one!
 
 	_kernel.get_controller_chrono().start();
 	loop(_kernel);
@@ -122,13 +122,14 @@ void state_driver_interface::loop(
 		if(states.is_change()) {
 
 			int prev=states.get_previous();
+			int next=states.get_current();
 			if(0!=prev) {
 
-				controllers[prev]->slumber(input_i);
+				controllers[prev]->slumber(input_i, next);
 			}
 
-			ci=controllers[states.get_current()];
-			ci->awake(input_i);
+			ci=controllers[next];
+			ci->awake(input_i, prev);
 			states.confirm();
 		}
 		//Draw. We produce some time for the logic engine as we draw.

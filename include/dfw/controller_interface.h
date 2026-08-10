@@ -135,11 +135,14 @@ class controller_interface:
 	//!that drawing does not affect the internal controller logic.
 	virtual void 			draw(ldv::screen&, int fps)=0;
 
-	//!Will be called when this controller is brought to the fron.
-	virtual void 			awake(input&)=0;
+	//!Will be called when this controller is brought to the front. The second
+	//!argument indicates the previous controller, -1 if this is the first to
+	//!be awaken.
+	virtual void 			awake(input&, int=-1)=0;
 
-	//!Will be called before a new controller is called to the front.
-	virtual void 			slumber(input&)=0;
+	//!Will be called before a new controller is called to the front. The
+	//!second argument indicates the next controller.
+	virtual void 			slumber(input&, int)=0;
 
 	//!Will return true if an state change is authorized via "set_state". This
 	//!can be useful to forbid changes and allow background processes to

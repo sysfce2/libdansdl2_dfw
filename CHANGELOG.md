@@ -12,6 +12,10 @@ Changes will be documented under Added, Changed, Deprecated, Removed, Fixed or S
 
 ### Pending
 
+## [1.3.0] - 2026-08-10
+### changed
+- Adds previous/next controller to awake/sleep. Breaks compatibility.
+
 ## [1.2.1] - 2026-05-23
 ### fixed
 - Fixes loop iteration data definitions, timestep should be measured in doubles and not floats.
