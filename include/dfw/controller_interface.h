@@ -138,7 +138,7 @@ class controller_interface:
 	//!Will be called when this controller is brought to the front. The second
 	//!argument indicates the previous controller, -1 if this is the first to
 	//!be awaken.
-	virtual void 			awake(input&, int=-1)=0;
+	virtual void 			awake(input&, int)=0;
 
 	//!Will be called before a new controller is called to the front. The
 	//!second argument indicates the next controller.

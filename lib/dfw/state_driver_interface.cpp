@@ -41,6 +41,14 @@ void state_driver_interface::register_controller(
 	int _index,
 	controller_interface& _controller
 ) {
+
+	if(0 > _index) {
+
+		std::stringstream ss;
+		ss<<"cannot register controller with negative id "<<_index<<", must be positive";
+		throw std::runtime_error(ss.str());
+	}
+
 	if(controllers.count(_index)){
 
 		std::stringstream ss;
